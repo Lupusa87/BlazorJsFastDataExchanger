@@ -5,7 +5,7 @@ If you like my blazor works and want to see more open sourced repos please suppo
 ![](https://placehold.it/15/4747d1/000000?text=+) 
 
 ![](https://placehold.it/15/00e600/000000?text=+) 
-Please send [email](VakhtangiAbashidze@gmail.com) if you consider to **hire me**.
+Please send [email](mailto:VakhtangiAbashidze@gmail.com) if you consider to **hire me**.
 ![](https://placehold.it/15/00e600/000000?text=+)     
 
 
