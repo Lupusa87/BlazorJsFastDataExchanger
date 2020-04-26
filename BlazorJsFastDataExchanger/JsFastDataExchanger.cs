@@ -1,9 +1,5 @@
-﻿using Microsoft.JSInterop;
-using Mono.WebAssembly.Interop;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Mono.WebAssembly.Interop;
+
 
 namespace BlazorJsFastDataExchanger
 {
@@ -13,20 +9,45 @@ namespace BlazorJsFastDataExchanger
         private static MonoWebAssemblyJSRuntime mono = new MonoWebAssemblyJSRuntime();
 
 
-        public static void SetData(string variableName, string data)
+        public static void SetStringData(string variableName, string data)
         {
-            
+
             mono.InvokeUnmarshalled<string, string, bool>(
-                    "BJSFDEJsFunctions.BJSFDESetData", variableName, data);
+                    "BJSFDEJsFunctions.BJSFDESetStringData", variableName, data);
         }
 
 
-        public static string GetData(string variableName)
+        public static void SetBinaryData(string variableName, byte[] data)
+        {
+
+            mono.InvokeUnmarshalled<string, byte[], bool>(
+                    "BJSFDEJsFunctions.BJSFDESetBinaryData", variableName, data);
+        }
+
+
+        public static string GetStringData(string variableName)
         {
             return mono.InvokeUnmarshalled<string, string>(
-                    "BJSFDEJsFunctions.BJSFDEGetData", variableName);
+                    "BJSFDEJsFunctions.BJSFDEGetStringData", variableName);
 
         }
+
+
+        public static bool GetBinaryData(string variableName, byte[] destination)
+        {
+            return mono.InvokeUnmarshalled<string, byte[], bool>(
+                    "BJSFDEJsFunctions.BJSFDEGetBinaryData", variableName, destination);
+
+        }
+
+        public static int GetBinaryDataLenght(string variableName)
+        {
+
+            return mono.InvokeUnmarshalled<string, int>(
+                    "BJSFDEJsFunctions.BJSFDEGetBinaryDataLenght", variableName);
+
+        }
+
 
     }
 }
