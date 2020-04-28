@@ -57,7 +57,7 @@ Demo has 2 samples.
 
 First sample is sending inputed text, expanding it 100000 times, js local interop is reversing it and geting back result, repoting performance in console.
 
-Second sample is reading selected file in .net memory, please note that before reading binary data we are getting binary **lenght** to **allocate** same size byte[] object in .net memorey and then calling getBinaryData writes actual bites to it.
+Second sample is reading selected file in .net memory, this sample is bit complex and you need to check whole code good to understand how it works.
 
 There should be also referenced small helper [repo](https://github.com/Lupusa87/BlazorWindowHelper) to see performance report in browser's console
 
