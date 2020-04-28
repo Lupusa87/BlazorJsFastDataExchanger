@@ -20,6 +20,12 @@ After installing package please add bellow script to your index.html
 
 ![](https://placehold.it/15/ffffff/000000?text=+)  
 
+To see how can this library used please check this [repo](https://github.com/Lupusa87/BlazorJsFastDataExchangerDemo), it contains demo for data transfer between js and .net or vice versa and second demo - complex and completed sample how to load file using inputfile.
+
+You can check [live demo](https://lupblazorsdataexchange.z20.web.core.windows.net/inputfilepage)
+
+![](https://placehold.it/15/ffffff/000000?text=+)  
+
 In some scenarios you need to have **heavy communication** between blazor and Javascript.
 
 Using built-in JS interop sometimes **isn't fast enough**.
