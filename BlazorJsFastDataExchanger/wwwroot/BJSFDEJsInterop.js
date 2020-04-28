@@ -28,5 +28,36 @@ window.BJSFDEJsFunctions = {
         delete window[variableName];
         return true;
     },
-  
+    BJSFDEGetBinaryDataChunk: function (v, d, b) {
+        var variableName = BINDING.conv_string(v);
+        var bag = BINDING.conv_string(b);
+        var bagArray = bag.split(',');
+        var position = bagArray[0];
+        var chunkSize = bagArray[1];
+
+        var sourceUint8Array = new Uint8Array(window[variableName], position, chunkSize);
+
+        var destinationUint8Array = Blazor.platform.toUint8Array(d);
+        destinationUint8Array.set(sourceUint8Array, position);
+
+        //console.log("js " + position);
+        return true;
+    },
+    BJSFDEDeleteGlobalVariable: function (v)
+    { 
+        delete window[BINDING.conv_string(v)];
+        return true;
+    },
+    CallDotNetMethod: function (pAssembly, pNamespace, pClass, pMethod, pArgs) {
+        Module.mono_call_static_method("[" + pAssembly + "] " + pNamespace + "." + pClass + ":" + pMethod, [pArgs]);
+        return true;
+    },
+    InvokeOnMessageAction: function (msg) {
+        Module.mono_call_static_method("[BlazorJsFastDataExchanger] BlazorJsFastDataExchanger.JsFastDataExchanger:HandleMessage", [msg]);
+        return true;
+    },
+    InvokeOnProgressAction: function (msg) {
+        Module.mono_call_static_method("[BlazorJsFastDataExchanger] BlazorJsFastDataExchanger.JsFastDataExchanger:HandleProgress", [msg]);
+        return true;
+    },
 };
