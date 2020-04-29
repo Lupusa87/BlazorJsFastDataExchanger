@@ -20,6 +20,12 @@ After installing package please add bellow script to your index.html
 
 ![](https://placehold.it/15/ffffff/000000?text=+)  
 
+To see how can this library used please check this [repo](https://github.com/Lupusa87/BlazorJsFastDataExchangerDemo), it contains demo for data transfer between js and .net or vice versa and second demo - complex and completed sample how to load file using inputfile, which shows incredible performance.
+
+You can check [live demo](https://lupblazorsdataexchange.z20.web.core.windows.net/inputfilepage)
+
+![](https://placehold.it/15/ffffff/000000?text=+)  
+
 In some scenarios you need to have **heavy communication** between blazor and Javascript.
 
 Using built-in JS interop sometimes **isn't fast enough**.
@@ -57,7 +63,7 @@ Demo has 2 samples.
 
 First sample is sending inputed text, expanding it 100000 times, js local interop is reversing it and geting back result, repoting performance in console.
 
-Second sample is reading selected file in .net memory, please note that before reading binary data we are getting binary **lenght** to **allocate** same size byte[] object in .net memorey and then calling getBinaryData writes actual bites to it.
+Second sample is reading selected file in .net memory, this sample is bit complex and you need to check whole code good to understand how it works.
 
 There should be also referenced small helper [repo](https://github.com/Lupusa87/BlazorWindowHelper) to see performance report in browser's console
 
