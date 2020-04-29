@@ -21,7 +21,14 @@ namespace BlazorJsFastDataExchanger
         {
 
             monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, string, bool>(
-                    "BJSFDEJsFunctions.BJSFDESetStringData", variableName, data);
+                    "BJSFDEJsFunctions.SetStringData", variableName, data);
+        }
+
+        public static string GetStringData(string variableName)
+        {
+            return monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, string>(
+                    "BJSFDEJsFunctions.GetStringData", variableName);
+
         }
 
 
@@ -29,48 +36,39 @@ namespace BlazorJsFastDataExchanger
         {
 
             monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, byte[], bool>(
-                    "BJSFDEJsFunctions.BJSFDESetBinaryData", variableName, data);
+                    "BJSFDEJsFunctions.SetBinaryData", variableName, data);
         }
 
 
-        public static string GetStringData(string variableName)
+        public static async Task<bool> GetBinaryData(BJSFDEBinaryInfo binaryInfo)
         {
-            return monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, string>(
-                    "BJSFDEJsFunctions.BJSFDEGetStringData", variableName);
-
-        }
-
-
-        public static bool GetBinaryData(BinaryInfo binaryInfo)
-        {
-
-            return monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, byte[], bool>(
-                    "BJSFDEJsFunctions.BJSFDEGetBinaryData", binaryInfo.variableName, binaryInfo.data);
-
-        }
-
-
-        public static async Task<bool> GetBinaryDataByPortions(BinaryInfo binaryInfo)
-        {
-
-            monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, byte[], string, bool>(
-                "BJSFDEJsFunctions.BJSFDEGetBinaryDataChunk", binaryInfo.variableName, binaryInfo.data, binaryInfo.position + "," + binaryInfo.chunkSize);
+            bool b = monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, byte[], bool>(
+                    "BJSFDEJsFunctions.GetBinaryData", binaryInfo.variableName, binaryInfo.data);
             await Task.Delay(1);
-            return await Task.FromResult(true);
+            return await Task.FromResult(b);
+        }
 
+
+        public static async Task<bool> GetBinaryDataByPortions(BJSFDEBinaryInfo binaryInfo)
+        {
+
+            bool b =monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, byte[], string, bool>(
+                "BJSFDEJsFunctions.GetBinaryDataChunk", binaryInfo.variableName, binaryInfo.data, binaryInfo.position + "," + binaryInfo.chunkSize);
+            await Task.Delay(1);
+            return await Task.FromResult(b);
         }
 
         public static bool DeleteGlobalVariable(string variableName)
         {
             return monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, bool>(
-                  "BJSFDEJsFunctions.BJSFDEDeleteGlobalVariable", variableName);
+                  "BJSFDEJsFunctions.DeleteGlobalVariable", variableName);
         }
 
         public static int GetBinaryDataLenght(string variableName)
         {
 
             return monoWebAssemblyJSRuntime.InvokeUnmarshalled<string, int>(
-                    "BJSFDEJsFunctions.BJSFDEGetBinaryDataLenght", variableName);
+                    "BJSFDEJsFunctions.GetBinaryDataLenght", variableName);
 
         }
 

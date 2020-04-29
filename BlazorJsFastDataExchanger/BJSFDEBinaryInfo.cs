@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorJsFastDataExchanger
 {
-    public class BinaryInfo
+    public class BJSFDEBinaryInfo
     {
 
         public string variableName { get; private set; }
@@ -15,9 +15,11 @@ namespace BlazorJsFastDataExchanger
         public string progressInfo { get; set; }
 
         public int position { get; set; } = 0;
-        public int chunkSize { get; set; } = 1024 * 1024 * 40;
+        public int chunkSize { get; set; } = 2097152; //1024*1024*2;
 
         public byte[] data { get; set; }
+
+
 
         public string dataString { get; set; }
 
@@ -25,7 +27,7 @@ namespace BlazorJsFastDataExchanger
 
         public Action OnFinish;
 
-        public BinaryInfo(string varName)
+        public BJSFDEBinaryInfo(string varName)
         {
             variableName = varName.ToLower();
         }
@@ -42,8 +44,22 @@ namespace BlazorJsFastDataExchanger
             return dataString;
         }
 
+        public async Task<int> LoadEntirelyAsync()
+        {
 
-        public async Task<int> LoadAsync()
+            data = new byte[dataLenght];
+
+            await JsFastDataExchanger.GetBinaryData(this);
+
+            progressInfo = ".net loaded 100 of 100%";
+            OnDataRead?.Invoke(100);
+
+            OnFinish?.Invoke();
+
+            return 1;
+        }
+
+        public async Task<int> LoadByPortionsAsync()
         {
            
             data = new byte[dataLenght];
@@ -52,7 +68,6 @@ namespace BlazorJsFastDataExchanger
             int CurrentPercent = 0;
 
             double p;
-            bool b;
 
             while (position < dataLenght)
             {
@@ -61,7 +76,7 @@ namespace BlazorJsFastDataExchanger
 
                 chunkSize = Math.Min(chunkSize, dataLenght - position);
 
-                b = await JsFastDataExchanger.GetBinaryDataByPortions(this);
+                await JsFastDataExchanger.GetBinaryDataByPortions(this);
 
                 position += chunkSize;
 

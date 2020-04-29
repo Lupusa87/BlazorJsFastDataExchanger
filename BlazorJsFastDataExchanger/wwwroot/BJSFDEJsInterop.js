@@ -2,33 +2,33 @@
 //https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts
 
 window.BJSFDEJsFunctions = {
-    BJSFDESetStringData: function (v, t) {
+    SetStringData: function (v, t) {
         this[BINDING.conv_string(v)] = BINDING.conv_string(t);
         return true;
     },
-    BJSFDESetBinaryData: function (v, d) {
+    SetBinaryData: function (v, d) {
         window[BINDING.conv_string(v)] = Blazor.platform.toUint8Array(d);
         return true;
     },
-    BJSFDEGetStringData: function (v) {
+    GetStringData: function (v) {
         var variableName = BINDING.conv_string(v);
         var result = this[variableName];
         delete this[variableName];
         return BINDING.js_to_mono_obj(result);
     },
-    BJSFDEGetBinaryDataLenght: function (v) {
+    GetBinaryDataLenght: function (v) {
         var variableName = BINDING.conv_string(v);
         return window[variableName].byteLength;
     },
-    BJSFDEGetBinaryData: function (v, d) {
+    GetBinaryData: function (v, d) {
         var variableName = BINDING.conv_string(v);
         var result = window[variableName];
         var destinationUint8Array = Blazor.platform.toUint8Array(d);
-        destinationUint8Array.set(result);
+        destinationUint8Array.set(new Uint8Array(result));
         delete window[variableName];
         return true;
     },
-    BJSFDEGetBinaryDataChunk: function (v, d, b) {
+    GetBinaryDataChunk: function (v, d, b) {
         var variableName = BINDING.conv_string(v);
         var bag = BINDING.conv_string(b);
         var bagArray = bag.split(',');
@@ -43,7 +43,7 @@ window.BJSFDEJsFunctions = {
         //console.log("js " + position);
         return true;
     },
-    BJSFDEDeleteGlobalVariable: function (v)
+    DeleteGlobalVariable: function (v)
     { 
         delete window[BINDING.conv_string(v)];
         return true;
