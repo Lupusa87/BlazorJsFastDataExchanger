@@ -22,7 +22,9 @@ After installing package please add bellow script to your index.html
 
 To see how can this library used please check this [repo](https://github.com/Lupusa87/BlazorJsFastDataExchangerDemo), it contains demo for data transfer between js and .net or vice versa and second demo - complex and completed sample how to load file using inputfile, which shows incredible performance.
 
-You can check [live demo](https://lupblazorsdataexchange.z20.web.core.windows.net/inputfilepage)
+You can check live demos:
+ 1. [Fast JS interop](https://lupblazordemos.z13.web.core.windows.net/PageFastInterop)
+ 2. [Fast load file](https://lupblazordemos.z13.web.core.windows.net/PageLoadFile)
 
 ![](https://placehold.it/15/ffffff/000000?text=+)  
 
