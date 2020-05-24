@@ -20,9 +20,11 @@ After installing package please add bellow script to your index.html
 
 ![](https://placehold.it/15/ffffff/000000?text=+)  
 
-To see how can this library used please check this [repo](https://github.com/Lupusa87/BlazorJsFastDataExchangerDemo), it contains demo for data transfer between js and .net or vice versa and second demo - complex and completed sample how to load file using inputfile, which shows incredible performance.
+To see how can this library used please check this [repo](https://github.com/Lupusa87/LupusaBlazorDemos), it contains demo for data transfer between js and .net or vice versa and another demo - complex and completed sample how to load file using inputfile, which shows incredible performance.
 
-You can check [live demo](https://lupblazorsdataexchange.z20.web.core.windows.net/inputfilepage)
+You can check live demos:
+ 1. [Fast JsInterop](https://lupblazordemos.z13.web.core.windows.net/PageFastInterop)
+ 2. [Fast load file](https://lupblazordemos.z13.web.core.windows.net/PageLoadFile)
 
 ![](https://placehold.it/15/ffffff/000000?text=+)  
 
@@ -56,9 +58,9 @@ Please note that variable names are accessible in js from **this** keyword for *
 It is not necessary to use this sequence, you can just GetStringData or SetStringData following your business logic needs.
 
 
-There is another [repo](https://github.com/Lupusa87/BlazorJsFastDataExchangerDemo) which is demonstarting difference between regular and advanced JS Interop, **if you are going to use this library please check carefully this demo to be sure you are using it properly**.
+There is another [repo](https://github.com/Lupusa87/LupusaBlazorDemos) which is demonstarting difference between regular and advanced JS Interop, **if you are going to use this library please check carefully this demo to be sure you are using it properly**.
 
-Demo has 2 samples.
+Repo has 2 samples [Fast JSInterop](https://lupblazordemos.z13.web.core.windows.net/PageFastInterop) and [Load File](https://lupblazordemos.z13.web.core.windows.net/PageLoadFile)
 
 
 First sample is sending inputed text, expanding it 100000 times, js local interop is reversing it and geting back result, repoting performance in console.
