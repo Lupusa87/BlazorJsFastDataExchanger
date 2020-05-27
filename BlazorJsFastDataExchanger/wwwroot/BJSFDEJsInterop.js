@@ -3,7 +3,7 @@
 
 window.BJSFDEJsFunctions = {
     SetStringData: function (v, t) {
-        this[BINDING.conv_string(v)] = BINDING.conv_string(t);
+        window[BINDING.conv_string(v)] = BINDING.conv_string(t);
         return true;
     },
     SetBinaryData: function (v, d) {
@@ -12,8 +12,8 @@ window.BJSFDEJsFunctions = {
     },
     GetStringData: function (v) {
         var variableName = BINDING.conv_string(v);
-        var result = this[variableName];
-        delete this[variableName];
+        var result = window[variableName];
+        delete window[variableName];
         return BINDING.js_to_mono_obj(result);
     },
     GetBinaryDataLenght: function (v) {
