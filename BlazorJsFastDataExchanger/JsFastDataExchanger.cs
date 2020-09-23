@@ -13,11 +13,28 @@ namespace BlazorJsFastDataExchanger
         public static Action<string> OnMessage { get; set; }
         public static Action<string> OnProgress { get; set; }
 
-        public static IJSUnmarshalledRuntime _jsUnmarshalledRuntime;
+        public static IJSRuntime _jsRuntime;
+        public static IJSRuntime jsRuntime
+        {
+
+            get {
+                return _jsRuntime;
+            }
+
+            set {
+
+                _jsRuntime = value;
+                _jsUnmarshalledRuntime = value as IJSUnmarshalledRuntime;
+            }
+        }
+
+
+        private static IJSUnmarshalledRuntime _jsUnmarshalledRuntime;
 
 
         public static void SetStringData(string variableName, string data)
         {
+           
             _jsUnmarshalledRuntime.InvokeUnmarshalled<string, string, bool>(
                     "BJSFDEJsFunctions.SetStringData", variableName, data);
         }
